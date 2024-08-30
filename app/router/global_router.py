@@ -77,7 +77,7 @@ async def confing_info_sel_device_by_ip(device_ip: str):
 @calc_router.get('/device/all_data_info/realtime/', dependencies=[Depends(check_creds)])
 async def get_all_data_realtime():
     """get all miner information realtime"""
-    all_miners_data = await get_all_miners_data()
+    all_miners_data, miners_info = await get_all_miners_data()
 
     return all_miners_data
 
@@ -91,7 +91,7 @@ async def get_all_data():
     if cache is not None:
         return json.loads(cache)
 
-    all_miners_data = await get_all_miners_data()
+    all_miners_data, miners_info = await get_all_miners_data()
 
     return all_miners_data
 
@@ -105,15 +105,15 @@ async def get_all_data_to_calc_profit():
     if cache is not None:
         return json.loads(cache)
 
-    all_miners_data = await get_all_miners_data()
+    all_miners_data, miners_info = await get_all_miners_data()
 
     with open('app/device_info_old_service.json') as f:
         d = json.load(f)
         f.close()
 
-    format_data = await miner_data_by_all_data_id(all_miners_data, d)
+    format_data = await miner_data_by_all_data_id(miners_info, d)
 
-    print("all_mine_data_get = ", len(all_miners_data))
+    print("all_mine_data_get = ", len(miners_info))
 
     red.set(datetime.date.today().strftime('%Y-%m-%d'), json.dumps(format_data))
 

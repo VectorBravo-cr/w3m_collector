@@ -22,8 +22,8 @@ def miner_data_by_all_data(miner_data):
 
 async def miner_data_by_all_data_id(miner_data, old_miners_list):
     ms = []
-    for device_old in old_miners_list:
-        for miner in miner_data:
+    for miner in miner_data:
+        for device_old in old_miners_list:
             if miner['mac'] == device_old['mac_address']:
                 # device_info = DeviceDataSchema(
                 #     device_id=device_old['device_uuid'],

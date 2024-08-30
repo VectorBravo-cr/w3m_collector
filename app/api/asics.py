@@ -41,11 +41,16 @@ async def get_config_miner(miner_net):
 async def get_all_miners_data():
     net = MinerNetwork.from_subnet(MINERS_NETWORK)
     miners = await net.scan()
+    miners_info = []
+    for miner in miners:
+        miner_data = await miner.get_data()
+        miners_info.append(miner_data)
+
     all_miner_data = await asyncio.gather(*[miner.get_data() for miner in miners])
 
     print("net = ", len(net))
     print("mine = ", len(miners))
     print("data = ", len(all_miner_data))
-    # all_miner_data = await asyncio.gather(*[miner.get_data() for miner in miners])
+    print("cycle = ", miners_info)
 
-    return all_miner_data
+    return all_miner_data, miners_info
