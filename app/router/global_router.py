@@ -115,6 +115,6 @@ async def get_all_data_to_calc_profit():
 
     print("all_mine_data_get = ", len(all_miners_data))
 
-    red.set(datetime.date.today().strftime('%Y-%m-%d'), json.dumps(format_data))
+    red.set(datetime.date.today().strftime('%Y-%m-%d'), json.dumps(all_miners_data)
 
     return HTTP_200_OK
