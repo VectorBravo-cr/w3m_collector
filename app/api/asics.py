@@ -9,9 +9,9 @@ from app.config import MINERS_NETWORK
 async def scan_miners():
     # default scan for subnet
     network = MinerNetwork.from_subnet(MINERS_NETWORK)
-    # print(network.hosts)
     miners = await network.scan()
-    print(len(miners))
+    print("ip scan realtime devices = ", len(miners))
+
     return miners
 
 
@@ -38,7 +38,14 @@ async def get_config_miner(miner_net):
     return None
 
 
-async def get_all_miners_data(miners):
+async def get_all_miners_data():
+    net = MinerNetwork.from_subnet(MINERS_NETWORK)
+    miners = await net.scan()
     all_miner_data = await asyncio.gather(*[miner.get_data() for miner in miners])
+
+    print("net = ", len(net))
+    print("mine = ", len(miners))
+    print("data = ", len(all_miner_data))
+    # all_miner_data = await asyncio.gather(*[miner.get_data() for miner in miners])
 
     return all_miner_data
