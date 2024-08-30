@@ -25,12 +25,12 @@ async def check_creds(credentials: HTTPBasicCredentials = Depends(security)):
 
 
 router = APIRouter(
-    tags=["device_methods"],
+    # tags=["device_methods"],
     responses={404: {"description": "Not found"}},
 )
 
 calc_router = APIRouter(
-    tags=["calc_profit_device"],
+    # tags=["calc_profit_device"],
     responses={404: {"description": "Not found"}},
 )
 
@@ -83,10 +83,10 @@ async def get_all_data_realtime():
     return all_miners_data
 
 
-@calc_router.get('/device/all_data_info/cache/', description='')
-async def get_all_data(dependencies=Depends(check_creds)):
+@calc_router.get('/device/all_data_info/cache/', description='', dependencies=[Depends(check_creds)])
+async def get_all_data():
     """get all data by cache today"""
-    print(dependencies)
+
     red = redis.Redis(host=REDIS_CONN, max_connections=10, decode_responses=True)
     cache = red.get(datetime.date.today().strftime('%Y-%m-%d'))
     if cache is not None:
@@ -101,17 +101,22 @@ async def get_all_data(dependencies=Depends(check_creds)):
 @calc_router.post('/device/all_data_info/create_cache/', dependencies=[Depends(check_creds)])
 async def get_all_data_to_calc_profit():
     """default research method"""
+
     red = redis.Redis(host=REDIS_CONN, max_connections=10, decode_responses=True)
     cache = red.get(datetime.date.today().strftime('%Y-%m-%d'))
     if cache is not None:
         return json.loads(cache)
 
     miners = await scan_miners()
+    print(miners)
     all_miners_data = await get_all_miners_data(miners)
+    print(len(all_miners_data))
+
     with open('app/device_info_old_service.json') as f:
         d = json.load(f)
         f.close()
+
     format_data = await miner_data_by_all_data_id(all_miners_data, d)
-    red.set(datetime.date.today().strftime('%Y-%m-%d'), json.dumps(format_data))
+    await red.set(datetime.date.today().strftime('%Y-%m-%d'), json.dumps(format_data))
 
     return HTTP_200_OK
