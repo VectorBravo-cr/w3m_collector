@@ -108,15 +108,18 @@ async def get_all_data_to_calc_profit():
         return json.loads(cache)
 
     miners = await scan_miners()
-    print(miners)
+
     all_miners_data = await get_all_miners_data(miners)
-    print(len(all_miners_data))
 
     with open('app/device_info_old_service.json') as f:
         d = json.load(f)
         f.close()
 
     format_data = await miner_data_by_all_data_id(all_miners_data, d)
-    await red.set(datetime.date.today().strftime('%Y-%m-%d'), json.dumps(format_data))
+
+    print("miners = ", len(miners))
+    print("all_mine_data_get = ", len(all_miners_data))
+
+    red.set(datetime.date.today().strftime('%Y-%m-%d'), json.dumps(format_data))
 
     return HTTP_200_OK
