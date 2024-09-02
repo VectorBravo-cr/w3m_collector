@@ -7,7 +7,7 @@ from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
 from starlette.status import HTTP_401_UNAUTHORIZED, HTTP_200_OK
 
-from app.api.asics import scan_miners, get_miner_data, get_all_miners_data
+from app.api.asics import scan_miners, get_miner_data, get_all_miners_data, get_all_miners_scan
 from app.config import BASIC_LOGIN, BASIC_PASS, MINERS_CONFIGURATION, REDIS_CONN
 from app.methods.default import miner_data_by_all_data, miner_data_by_all_data_id
 
@@ -77,7 +77,7 @@ async def confing_info_sel_device_by_ip(device_ip: str):
 @calc_router.get('/device/all_data_info/realtime/', dependencies=[Depends(check_creds)])
 async def get_all_data_realtime():
     """get all miner information realtime"""
-    all_miners_data, miners_info = await get_all_miners_data()
+    all_miners_data, miners_info = await get_all_miners_scan()
 
     return all_miners_data
 
