@@ -77,7 +77,7 @@ async def confing_info_sel_device_by_ip(device_ip: str):
 @calc_router.get('/device/all_data_info/realtime/', dependencies=[Depends(check_creds)])
 async def get_all_data_realtime():
     """get all miner information realtime"""
-    all_miners_data, miners_info = await get_all_miners_scan()
+    all_miners_data = await get_all_miners_scan()
 
     return all_miners_data
 
