@@ -810,7 +810,7 @@
     "service_fee": 0
   },
   {
-    "mac_address": "NOT_MAC_1",
+    "mac_address": "CC:09:1A:00:07:3C",
     "device_uuid": "38ef497d-b4a9-48ca-9d7f-294771ebcbf2",
     "is_active": true,
     "all_data": {"ip": "10.2.38.31", "datetime": "1709331216", "uptime": null, "mac": null, "model": "WhatsMiner", "make": "WhatsMiner", "api_ver": null, "fw_ver": null, "hostname": null, "hashrate": null, "expected_hashrate": null, "hashboards": [{"slot": 0, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": null, "serial_number": null, "missing": true}, {"slot": 1, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": null, "serial_number": null, "missing": true}, {"slot": 2, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": null, "serial_number": null, "missing": true}], "expected_hashboards": 3, "temperature_avg": null, "env_temp": null, "wattage": null, "wattage_limit": null, "fans": [{"speed": null}, {"speed": null}], "fan_psu": null, "total_chips": null, "expected_chips": 0, "percent_expected_chips": null, "percent_expected_hashrate": null, "percent_expected_wattage": null, "nominal": null, "config": null, "errors": [], "fault_light": false, "efficiency": null, "is_mining": true},
@@ -1160,7 +1160,7 @@
     "service_fee": 0
   },
   {
-    "mac_address": "NOT_MAC_2",
+    "mac_address": "CC:09:1A:00:07:76",
     "device_uuid": "4b125a97-1430-4d9b-8b96-f5757d55bf75",
     "is_active": true,
     "all_data": {"ip": "10.2.38.142", "datetime": "1709331216", "uptime": null, "mac": null, "model": "WhatsMiner", "make": "WhatsMiner", "api_ver": null, "fw_ver": null, "hostname": null, "hashrate": null, "expected_hashrate": null, "hashboards": [{"slot": 0, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": null, "serial_number": null, "missing": true}, {"slot": 1, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": null, "serial_number": null, "missing": true}, {"slot": 2, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": null, "serial_number": null, "missing": true}], "expected_hashboards": 3, "temperature_avg": null, "env_temp": null, "wattage": null, "wattage_limit": null, "fans": [{"speed": null}, {"speed": null}], "fan_psu": null, "total_chips": null, "expected_chips": 0, "percent_expected_chips": null, "percent_expected_hashrate": null, "percent_expected_wattage": null, "nominal": null, "config": null, "errors": [], "fault_light": false, "efficiency": null, "is_mining": true},
@@ -1170,7 +1170,7 @@
     "service_fee": 0
   },
   {
-    "mac_address": "NOT_MAC_4",
+    "mac_address": "CC:09:1A:00:26:09",
     "device_uuid": "4bc5552e-37cd-410d-a6f7-3e23dc2b8782",
     "is_active": true,
     "all_data": {"ip": "10.2.39.107", "datetime": "1709331216", "uptime": null, "mac": null, "model": "M50 VH80", "make": "WhatsMiner", "api_ver": null, "fw_ver": null, "hostname": null, "hashrate": null, "expected_hashrate": null, "hashboards": [{"slot": 0, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": 111, "serial_number": null, "missing": true}, {"slot": 1, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": 111, "serial_number": null, "missing": true}, {"slot": 2, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": 111, "serial_number": null, "missing": true}], "expected_hashboards": 3, "temperature_avg": null, "env_temp": null, "wattage": null, "wattage_limit": null, "fans": [{"speed": null}, {"speed": null}], "fan_psu": null, "total_chips": null, "expected_chips": 333, "percent_expected_chips": null, "percent_expected_hashrate": null, "percent_expected_wattage": null, "nominal": null, "config": {"pools": {"groups": []}, "fan_mode": {"mode": "normal", "minimum_fans": 1, "minimum_speed": 0}, "temperature": {"target": null, "hot": null, "danger": null}, "mining_mode": {"mode": "sleep"}, "power_scaling": {"mode": "disabled"}}, "errors": [], "fault_light": false, "efficiency": null, "is_mining": true},
@@ -1630,7 +1630,7 @@
     "service_fee": 0
   },
   {
-    "mac_address": "NOT_MAC_3",
+    "mac_address": "CC:09:1A:00:25:FE",
     "device_uuid": "6b416b20-2989-4a31-b722-a6057f874f66",
     "is_active": true,
     "all_data": {"ip": "10.2.39.93", "datetime": "1709331216", "uptime": null, "mac": null, "model": "WhatsMiner", "make": "WhatsMiner", "api_ver": null, "fw_ver": null, "hostname": null, "hashrate": null, "expected_hashrate": null, "hashboards": [{"slot": 0, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": null, "serial_number": null, "missing": true}, {"slot": 1, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": null, "serial_number": null, "missing": true}, {"slot": 2, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": null, "serial_number": null, "missing": true}], "expected_hashboards": 3, "temperature_avg": null, "env_temp": null, "wattage": null, "wattage_limit": null, "fans": [{"speed": null}, {"speed": null}], "fan_psu": null, "total_chips": null, "expected_chips": 0, "percent_expected_chips": null, "percent_expected_hashrate": null, "percent_expected_wattage": null, "nominal": null, "config": null, "errors": [], "fault_light": false, "efficiency": null, "is_mining": true},
@@ -3570,7 +3570,7 @@
     "service_fee": 0
   },
   {
-    "mac_address": "NOT_MAC_5",
+    "mac_address": "CC:08:0E:00:1C:50",
     "device_uuid": "e2c144af-3776-4549-80ab-70afe2d4f12f",
     "is_active": true,
     "all_data": {"ip": "10.2.39.138", "datetime": "1709331216", "uptime": null, "mac": null, "model": "WhatsMiner", "make": "WhatsMiner", "api_ver": null, "fw_ver": null, "hostname": null, "hashrate": null, "expected_hashrate": null, "hashboards": [{"slot": 0, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": null, "serial_number": null, "missing": true}, {"slot": 1, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": null, "serial_number": null, "missing": true}, {"slot": 2, "hashrate": null, "temp": null, "chip_temp": null, "chips": null, "expected_chips": null, "serial_number": null, "missing": true}], "expected_hashboards": 3, "temperature_avg": null, "env_temp": null, "wattage": null, "wattage_limit": null, "fans": [{"speed": null}, {"speed": null}], "fan_psu": null, "total_chips": null, "expected_chips": 0, "percent_expected_chips": null, "percent_expected_hashrate": null, "percent_expected_wattage": null, "nominal": null, "config": {"pools": {"groups": []}, "fan_mode": {"mode": "normal", "minimum_fans": 1, "minimum_speed": 0}, "temperature": {"target": null, "hot": null, "danger": null}, "mining_mode": {"mode": "sleep"}, "power_scaling": {"mode": "disabled"}}, "errors": [], "fault_light": false, "efficiency": null, "is_mining": true},

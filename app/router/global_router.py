@@ -53,19 +53,28 @@ async def default_search_devices():
 @router.get('/device/get_device/{device_ip}', dependencies=[Depends(check_creds)])
 async def all_info_selected_device_by_ip(device_ip: str):
     miner_data = await get_miner_data(device_ip)
-    return miner_data.as_json()
+    if miner_data is not None:
+        return miner_data.as_json()
+    else:
+        return []
 
 
 @router.get('/device/get_device/hashrate/{device_ip}', dependencies=[Depends(check_creds)])
 async def hasrate_info_sel_device_by_ip(device_ip: str):
     miner_data = await get_miner_data(device_ip)
-    return miner_data.hashrate
+    if miner_data is not None:
+        return miner_data.hashrate
+    else:
+        return []
 
 
 @router.get('/device/get_device/config/{device_ip}', dependencies=[Depends(check_creds)])
 async def confing_info_sel_device_by_ip(device_ip: str):
     miner_data = await get_miner_data(device_ip)
-    return miner_data.config
+    if miner_data is not None:
+        return miner_data.config
+    else:
+        return []
 
 
 # @router.post('/device/config/{device_ip}', dependencies=[Depends(check_creds)])
