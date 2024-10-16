@@ -47,6 +47,16 @@ async def get_all_miners_scan():
     return all_miner_data
 
 
+def mac_returner(data):
+    macs = []
+    if data:
+        for asic in data:
+            macs.append(asic['mac'])
+
+    print(macs)
+    return macs
+
+
 async def get_all_miners_data():
     net = MinerNetwork.from_subnet(MINERS_NETWORK)
     miners = await net.scan()

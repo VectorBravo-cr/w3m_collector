@@ -39,11 +39,11 @@ async def miner_data_by_all_data_id(miner_data, old_miners_list):
                     "device_id" : device_old['device_uuid'],
                     "mac_address" : miner['mac'],
                     "is_active" : miner['is_mining'],
-                    "pool_name" : device_old['pool_name'],
+                    "pool_name" : miner['config']['pools']['groups'][0]['pools'][0]['url'].split('//')[1].split(':')[0],
                     "kw_per_hour" : miner['wattage'],
                     "hostname" : miner['hostname'],
-                    "miner_name" : miner['hostname'],
-                    "subaccount" : miner['config']['pools']['groups'][0]['pools'][0]['user']
+                    "miner_name" : miner['config']['pools']['groups'][0]['pools'][0]['user'].split('.')[1],
+                    "subaccount" : miner['config']['pools']['groups'][0]['pools'][0]['user'].split('.')[0]
                 }
                 ms.append(device_info)
 

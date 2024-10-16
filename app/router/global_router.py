@@ -7,7 +7,7 @@ from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
 from starlette.status import HTTP_401_UNAUTHORIZED, HTTP_200_OK
 
-from app.api.asics import scan_miners, get_miner_data, get_all_miners_data, get_all_miners_scan
+from app.api.asics import scan_miners, get_miner_data, get_all_miners_data, get_all_miners_scan, mac_returner
 from app.config import BASIC_LOGIN, BASIC_PASS, MINERS_CONFIGURATION, REDIS_CONN
 from app.methods.default import miner_data_by_all_data, miner_data_by_all_data_id
 
@@ -44,6 +44,7 @@ calc_router = APIRouter(
 async def default_search_devices():
     try:
         asics_network = await scan_miners()
+
         return asics_network
 
     except:
@@ -77,6 +78,26 @@ async def confing_info_sel_device_by_ip(device_ip: str):
         return []
 
 
+@router.get('/device/get_device/all_mac/', dependencies=[Depends(check_creds)])
+async def all_miners_mac():
+
+    red = redis.Redis(host=REDIS_CONN, max_connections=10, decode_responses=True)
+    cache = red.get('macs_cache_' + datetime.date.today().strftime('%Y-%m-%d'))
+    if cache is not None:
+        return json.loads(cache)
+
+    all_miners_data, miners_info = await get_all_miners_data()
+    macs = mac_returner(all_miners_data)
+    red.set('macs_cache_' + datetime.date.today().strftime('%Y-%m-%d'), json.dumps(macs))
+
+    return macs
+
+
+# @router.get('/device/get_device/old_devices/', dependencies=[Depends(check_creds)])
+# async def all_miners_old():
+#
+
+
 # @router.post('/device/config/{device_ip}', dependencies=[Depends(check_creds)])
 # async def provisioning_service(device_ip: str):
 #     print("configuration device by ip")
@@ -105,14 +126,23 @@ async def get_all_data():
     return all_miners_data
 
 
+@calc_router.post('/device/all_data_info/old_devices/', dependencies=[Depends(check_creds)])
+async def get_all_data_to_calc_profit_old_devices():
+    with open('app/device_info_old_service.json') as f:
+        d = json.load(f)
+        f.close()
+
+
+
+
 @calc_router.post('/device/all_data_info/create_cache/', dependencies=[Depends(check_creds)])
 async def get_all_data_to_calc_profit():
     """default research method"""
 
     red = redis.Redis(host=REDIS_CONN, max_connections=10, decode_responses=True)
-    cache = red.get(datetime.date.today().strftime('%Y-%m-%d'))
-    if cache is not None:
-        return json.loads(cache)
+    # cache = red.get(datetime.date.today().strftime('%Y-%m-%d'))
+    # if cache is not None:
+    #     return json.loads(cache)
 
     all_miners_data, miners_info = await get_all_miners_data()
 
