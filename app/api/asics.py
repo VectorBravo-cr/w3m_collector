@@ -60,16 +60,27 @@ def mac_returner(data):
 async def get_all_miners_data():
     net = MinerNetwork.from_subnet(MINERS_NETWORK)
     miners = await net.scan()
-    miners_info = []
-    for miner in miners:
-        miner_data = await miner.get_data()
-        miners_info.append(miner_data)
+
+    # miners_info = []
+    # for miner in miners:
+    #     miner_data = await miner.get_data()
+    #     miners_info.append(miner_data)
 
     all_miner_data = await asyncio.gather(*[miner.get_data() for miner in miners])
 
     print("net = ", len(net))
     print("mine = ", len(miners))
     print("data = ", len(all_miner_data))
-    print("cycle = ", miners_info)
+    # print("cycle = ", miners_info)
 
-    return all_miner_data, miners_info
+    # return all_miner_data, miners_info
+    return all_miner_data
+
+
+async def get_uniq_macs(list_old, list_new):
+    uniq = []
+    for new in list_new:
+        if new not in list_old:
+            uniq.append(new)
+
+    return uniq

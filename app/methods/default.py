@@ -1,4 +1,5 @@
 from app.schemas.calc_profit import Device, DeviceDataSchema
+import uuid
 
 
 def miner_data_by_all_data(miner_data):
@@ -36,15 +37,32 @@ async def miner_data_by_all_data_id(miner_data, old_miners_list):
                 #     subaccount=miner['config']['pools']['groups'][0]['pools'][0]['user']
                 # )
                 device_info = {
-                    "device_id" : device_old['device_uuid'],
-                    "mac_address" : miner['mac'],
-                    "is_active" : miner['is_mining'],
-                    "pool_name" : miner['config']['pools']['groups'][0]['pools'][0]['url'].split('//')[1].split(':')[0],
-                    "kw_per_hour" : miner['wattage'],
-                    "hostname" : miner['hostname'],
-                    "miner_name" : miner['config']['pools']['groups'][0]['pools'][0]['user'].split('.')[1],
-                    "subaccount" : miner['config']['pools']['groups'][0]['pools'][0]['user'].split('.')[0]
+                    "device_id": device_old['device_uuid'],
+                    "mac_address": miner['mac'],
+                    "is_active": miner['is_mining'],
+                    "pool_name": miner['config']['pools']['groups'][0]['pools'][0]['url'].split('//')[1].split(':')[0],
+                    "kw_per_hour": miner['wattage'],
+                    "hostname": miner['hostname'],
+                    "miner_name": miner['config']['pools']['groups'][0]['pools'][0]['user'].split('.')[1],
+                    "subaccount": miner['config']['pools']['groups'][0]['pools'][0]['user'].split('.')[0]
                 }
                 ms.append(device_info)
+        print(miner)
 
     return ms
+
+
+async def miner_data_new(miner_data):
+    print(miner_data)
+    device_info = {
+        "device_id": str(uuid.uuid4()),
+        "mac_address": miner_data['mac'],
+        "is_active": miner_data['is_mining'],
+        "pool_name": miner_data['config']['pools']['groups'][0]['pools'][0]['url'].split('//')[1].split(':')[0],
+        "kw_per_hour": miner_data['wattage'],
+        "hostname": miner_data['hostname'],
+        "miner_name": miner_data['config']['pools']['groups'][0]['pools'][0]['user'].split('.')[1],
+        "subaccount": miner_data['config']['pools']['groups'][0]['pools'][0]['user'].split('.')[0]
+    }
+
+    return device_info
